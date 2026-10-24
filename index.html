@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17152b">
+  <title>Tiên Lộ: Khởi Nguyên</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">NHÀ TU HÀNH · NHẬT KÝ TIÊN LỘ</p>
+        <h1>☯ Tiên Lộ: Khởi Nguyên</h1>
+      </div>
+      <div class="save-status"><span class="status-dot"></span><span id="saveStatus">Đã bật tự lưu</span></div>
+    </header>
+
+    <main class="layout">
+      <section class="panel hero-panel">
+        <div class="scene" id="scene">
+          <div class="moon"></div><div class="mountain mountain-back"></div><div class="mountain mountain-front"></div>
+          <div class="scene-label"><span id="mapBadge">Rừng Tân Thủ</span><span id="weather">Linh khí dồi dào</span></div>
+          <div class="combatant player-sprite" id="playerSprite">🧙</div>
+          <div class="combatant enemy-sprite" id="enemySprite">🐺</div>
+          <div class="damage-float" id="damageFloat"></div>
+          <div class="scene-bottom"><span id="battleText">Đang dò tìm yêu thú...</span><span id="enemyCount">Yêu thú: 0</span></div>
+        </div>
+        <div class="hero-info">
+          <div class="avatar">🧙</div>
+          <div class="hero-main">
+            <div class="name-row"><h2 id="playerName">Tiểu Đạo Sĩ</h2><span class="pill" id="realmBadge">Phàm nhân</span></div>
+            <p class="muted" id="levelText">Cấp 1 · Chiến lực 12</p>
+            <div class="bar-label"><span>Tu vi</span><span id="xpText">0 / 30 EXP</span></div>
+            <div class="progress"><div id="xpBar" class="progress-fill xp-fill"></div></div>
+            <div class="bar-label health-label"><span>Sinh lực</span><span id="hpText">100 / 100</span></div>
+            <div class="progress"><div id="hpBar" class="progress-fill hp-fill"></div></div>
+          </div>
+        </div>
+        <div class="stat-grid">
+          <div class="stat"><span>⚔️ Công kích</span><strong id="attackStat">12</strong></div>
+          <div class="stat"><span>🛡️ Phòng ngự</span><strong id="defenseStat">3</strong></div>
+          <div class="stat"><span>🪙 Linh thạch</span><strong id="goldStat">0</strong></div>
+          <div class="stat"><span>💠 Tu vi tích lũy</span><strong id="cultivationStat">0</strong></div>
+        </div>
+      </section>
+
+      <section class="panel enemy-panel">
+        <div class="section-heading"><div><p class="eyebrow">KHU VỰC HIỆN TẠI</p><h2 id="mapTitle">Rừng Tân Thủ</h2></div><span class="level-tag" id="mapLevel">Cấp đề xuất 1+</span></div>
+        <div class="enemy-card">
+          <div class="enemy-icon" id="enemyIcon">🐺</div>
+          <div class="enemy-details"><h3 id="enemyName">Sói Xám</h3><p class="muted" id="enemyDesc">Yêu thú cấp thấp thường xuất hiện ở rìa rừng.</p><div class="bar-label"><span>HP yêu thú</span><span id="enemyHpText">40 / 40</span></div><div class="progress"><div id="enemyHpBar" class="progress-fill enemy-fill"></div></div></div>
+        </div>
+        <div class="action-row">
+          <button class="primary" id="cultivateBtn">✨ Tĩnh tâm tu luyện</button>
+          <button class="secondary" id="healBtn">🌿 Hồi phục (20 🪙)</button>
+        </div>
+        <p class="hint" id="combatHint">Nhân vật tự động chiến đấu khi còn sinh lực.</p>
+        <div class="section-heading map-heading"><div><p class="eyebrow">SƠN HÀ ĐẠI LỤC</p><h2>Khám phá bản đồ</h2></div></div>
+        <div class="map-list" id="mapList"></div>
+      </section>
+
+      <section class="panel gear-panel">
+        <div class="section-heading"><div><p class="eyebrow">ĐẠO CỤ HỘ THÂN</p><h2>Trang bị</h2></div><span class="pill">Tự động nhặt</span></div>
+        <div class="gear-slots">
+          <div class="gear-slot"><span class="gear-icon">⚔️</span><div><small>Vũ khí</small><strong id="weaponName">Kiếm gỗ</strong><p id="weaponBonus">+0 công kích</p></div></div>
+          <div class="gear-slot"><span class="gear-icon">🥋</span><div><small>Pháp y</small><strong id="armorName">Áo vải</strong><p id="armorBonus">+0 phòng ngự</p></div></div>
+          <div class="gear-slot"><span class="gear-icon">📿</span><div><small>Linh vật</small><strong id="charmName">Ngọc bình an</strong><p id="charmBonus">+0 công kích</p></div></div>
+        </div>
+        <div class="loot-box"><div><span class="eyebrow">CHIẾN LỢI PHẨM GẦN NHẤT</span><p id="lootText">Chưa có chiến lợi phẩm.</p></div><span class="loot-symbol">🎁</span></div>
+        <div class="section-heading log-heading"><div><p class="eyebrow">GHI CHÉP</p><h2>Nhật ký tu hành</h2></div><button class="text-button" id="clearLogBtn">Xóa log</button></div>
+        <div class="log" id="log" aria-live="polite"></div>
+      </section>
+
+      <section class="panel manual-panel">
+        <div class="section-heading"><div><p class="eyebrow">LƯU TRỮ TIẾN TRÌNH</p><h2>Dữ liệu tu hành</h2></div></div>
+        <p class="muted">Tiến trình được lưu tự động trên trình duyệt của thiết bị này. Xóa dữ liệu trình duyệt có thể làm mất bản lưu.</p>
+        <div class="action-row"><button class="secondary" id="saveBtn">💾 Lưu ngay</button><button class="danger" id="resetBtn">↻ Chơi lại từ đầu</button></div>
+        <p class="tiny">Mẹo: đánh quái để nhận EXP, linh thạch và trang bị. Đủ EXP sẽ tăng cấp; tích lũy tu vi giúp mở cảnh giới mới.</p>
+      </section>
+    </main>
+    <footer>Tiên Lộ: Khởi Nguyên · Bản thử nghiệm 0.1 · Game fan-made độc lập</footer>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
